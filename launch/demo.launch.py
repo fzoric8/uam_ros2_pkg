@@ -1,3 +1,18 @@
+import launch
+import launch_ros.actions
+
+def generate_launch_description():
+    return launch.LaunchDescription([
+        launch_ros.actions.Node(
+            package='demo_nodes_cpp',
+            executable='talker',
+            name='talker'),
+  ])
+
+
+
+"""
+
 import os
 import xacro
 from ament_index_python.packages import get_package_share_directory
@@ -10,7 +25,6 @@ def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
-    # Model arguments
     ns = "red"
     xacro_mappings = {'namespace': ns, 
                       'enable_velodyne': False, 
@@ -26,25 +40,20 @@ def generate_launch_description():
     xacro_file_name = 'models/kopterworx/urdf/kopterworx.urdf.xacro'
     xacro = os.path.join(
         get_package_share_directory('uam_ros2_pkg'),
-        urdf_file_name)
+        xacro_file_name)
     doc = xacro.process_file(xacro, mappings = xacro_mappings)
+    robot_desc = doc.toprettyxml(indent='  ')
+    params = {'robot_description': robot_desc}
+
 
     rsp = launch_ros.actions.Node(package='robot_state_publisher',
                                   node_executable='robot_state_publisher_node',
                                   output='both',
                                   parameters=[params])
-    robot_desc = doc.toprettyxml(indent='  ')
 
     return launch.LaunchDescription([rsp])
 
 
 
-    # Robot state publisher launch
 
-    #return LaunchDescription([
-    #    DeclareLaunchArgument(
-    #        'use_sim_time',
-    #        default_value='false',
-    #        description='Use simulation (Gazebo) clock if true'),
-    #])
-
+""" 
