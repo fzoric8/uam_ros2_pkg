@@ -18,6 +18,22 @@ To load kopterworx, `ardupilot_gazebo` was needed, and `rapidJson`.
 [RapidJson](https://github.com/Tencent/rapidjson?tab=readme-ov-file) with installation [instructions](https://rapidjson.org/). 
 [ardupilot_gazebo](https://github.com/ArduPilot/ardupilot_gazebo/tree/ros2) can be built if switched to ros2 branch. 
 
+## PX4-SITL: 
+
+Download following ROS package:
+* [PX4-Autopilot](https://github.com/PX4/PX4-Autopilot) 
+
+For the PX4 SITL. 
+
+Instructions for the [PX4 cmds](https://docs.px4.io/v1.12/en/simulation/gazebo.html) in Gazebo. 
+
+Required pip packages are: 
+```
+pip3 install kconfiglib
+pip3 install jinja2
+pip3 install future
+```
+
 ## TODO: 
 
 - [x] Build package sucessfuly
