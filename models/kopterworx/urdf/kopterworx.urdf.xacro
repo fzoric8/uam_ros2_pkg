@@ -7,7 +7,6 @@
   <xacro:property name="enable_magnet" value="$(arg enable_magnet)"/>
   <xacro:property name="enable_gimbal" value="$(arg enable_gimbal)"/>
   <xacro:property name="enable_rotating_velodyne" value="$(arg enable_rotating_velodyne)" />
-  <xacro:property name="enable_tilt_rotors" value="$(arg enable_tilt_rotors)"/>
   <xacro:property name="enable_simple_manipulator" value="$(arg enable_simple_manipulator)"/>
   <xacro:property name="fdm_port_in" value="$(arg fdm_port_in)"/>
   <xacro:property name="fdm_port_out" value="$(arg fdm_port_out)"/>
@@ -51,14 +50,7 @@
   <!-- Instantiate kopterworx mechanics "mechanics" -->
 
   <!-- Setup regular quadrotor -->
-  <xacro:unless value="${enable_tilt_rotors}">
-    <xacro:include filename="$(find ardupilot_gazebo)/models/kopterworx/urdf/kopterworx_base.urdf.xacro" />
-  </xacro:unless>
-
-  <!-- Setup tilt quadrotor -->
-  <xacro:if value="${enable_tilt_rotors}">
-    <xacro:include filename="$(find ardupilot_gazebo)/models/kopterworx/urdf/kopterworx_tilt_base.urdf.xacro" />
-  </xacro:if>
+  <xacro:include filename="$(find uam_ros2_pkg)/models/kopterworx/urdf/kopterworx_base.urdf.xacro" />
 
   <xacro:if value="${enable_simple_manipulator}">
     <xacro:include filename="$(find ardupilot_gazebo)/models/util/multirotor_movable_masses.urdf.xacro"/>
